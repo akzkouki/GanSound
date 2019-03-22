@@ -21,7 +21,6 @@ def init(filepath):
     input_dim = data.shape[1]
 
     print("InputShape=" + str(input_dim) + "Type" + str(type(input_dim)))
-    wav_write("test",data[0])
     return input_dim,data
 
 def wav_write(filename,data):
@@ -134,7 +133,7 @@ def main_train(z_input_size, generator_model, discriminator_model, gan_model, lo
                 wav_write("epoch=" + str(e) ,generated_images[0])
 
 
-input_dim , data = init("KickData.npy")
+input_dim , data = init("trainData.npy")
 
 X_train = data
 X_train.astype('float32')
@@ -154,8 +153,8 @@ gen.summary()
 dis.summary()
 # パラメータ設定
 gan_losses = {"d":[], "g":[], "f":[]}
-epoch = 50
-batch = 1000
+epoch = 2000000
+batch = 50
 z_plot_freq = 1000
 plot_freq = epoch -2
 z_input_vector = 100
